@@ -22,13 +22,23 @@ int main()
 	cout<<fabs(c)<<endl;
 
 	// power 
-	//double pow (double base     , double exponent);
-	cout<<"pow()"<<endl;
+	//double pow (double base, double exponent);
+	cout<<"\npow()"<<endl;
 	cout<<pow(5, 2)<<endl;
 
 	float m = 2.5, n = 2;
 	cout<<pow(m, n)<<endl;	
 
+	//  square root
+	//  double sqrt (double x);
+	cout<<"\nsqrt()"<<endl;
+	cout<<sqrt(25)<<endl;
 	
+	// cubic root
+	// double cbrt  (double x);
+	cout<<"\ncbrt()"<<endl;
+	cout<<cbrt(125.0)<<endl;
+	cout<<cbrt(27)<<endl;
+
 	return 0;
 }
