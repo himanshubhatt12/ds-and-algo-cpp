@@ -20,8 +20,6 @@ int prim_algo(vii& adj, vi& par)
 
 	vb selected(n, false);
 
-	vi parent(n, -1);
-
 	int total = 0;
 
 	mew[0] = 0;
@@ -40,7 +38,7 @@ int prim_algo(vii& adj, vi& par)
 		}
 		if(mew[mv] == INF)
 		{
-			cout<<"NO MST exists";
+			cout<<"NO MST exists"<<endl;
 			return INF;
 		}
 		selected[mv] = true;
@@ -51,6 +49,7 @@ int prim_algo(vii& adj, vi& par)
 			// this step helps to avoid cycle formation
 			if(!selected[j] && (adj[mv][j] < mew[j]))
 			{
+				par[j] = mv;
 				mew[j] = adj[mv][j];
 			}
 		}
@@ -76,15 +75,22 @@ int main()
 	{
 		int s, e, w;
 		cin>>s>>e>>w;
-
 		adj[s][e] = w;
 		adj[e][s] = w;
 	}
 
-	vector<int> par;
+	vector<int> par(n, -1);
 	int min_cost = prim_algo(adj, par);
+	cout<<"MST:"<<endl;
 
-	cout<<"Cost of MST: "<<min_cost<<endl;
+	for(int i = 0;i<n;i++)
+	{
+		if(par[i]!= -1)
+		{
+			cout<<i<<" connected with "<<par[i]<<" with weight "<<adj[i][par[i]]<<endl;
+		}
+	}
+	cout<<"\nCost of MST: "<<min_cost<<endl;
 
 	return 0;
 }
